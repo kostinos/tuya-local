@@ -1,0 +1,453 @@
+name: Tuvio TR06HLCB
+products:
+  - id: gbgjradjqq2k6aal
+    manufacturer: Tuvio
+    model: TR06HLCB
+entities:
+  - entity: vacuum
+    name: Tuvio TR06HLCB Local
+    dps:
+      - id: 5
+        name: status
+        type: string
+        mapping:
+          - dps_val: standby
+            value: standby
+          - dps_val: sleep
+            value: standby
+          - dps_val: pos_arrived
+            value: standby
+          - dps_val: mapping_done
+            value: standby
+          - dps_val: charging
+            value: docked
+          - dps_val: charge_done
+            value: docked
+          - dps_val: paused
+            value: paused
+          - dps_val: goto_charge
+            value: returning
+          - dps_val: fault
+            value: error
+          - dps_val: smart
+            value: cleaning
+          - dps_val: part_clean
+            value: cleaning
+          - dps_val: zone_clean
+            value: cleaning
+          - dps_val: cleaning
+            value: cleaning
+          - dps_val: select_room
+            value: cleaning
+          - dps_val: mapping
+            value: cleaning
+          - dps_val: fast_map
+            value: cleaning
+      - id: 4
+        name: command
+        type: string
+        optional: true
+        mapping:
+          - value: start
+            value_redirect: activation_command
+            dps_val: start
+          - value: stop
+            value_redirect: activation_command
+            dps_val: stop
+          - value: pause
+            value_redirect: pause_command
+            dps_val: pause
+          - value: return_to_base
+            value_redirect: dock_command
+            dps_val: return_to_base
+      - id: 1
+        name: activation_command
+        type: boolean
+        optional: true
+        mapping:
+          - dps_val: true
+            value: start
+          - dps_val: false
+            value: stop
+      - id: 2
+        name: pause_command
+        type: boolean
+        optional: true
+        mapping:
+          - dps_val: true
+            value: pause
+      - id: 3
+        name: dock_command
+        type: boolean
+        optional: true
+        mapping:
+          - dps_val: true
+            value: return_to_base
+      - id: 11
+        name: locate
+        type: boolean
+        optional: true
+      - id: 9
+        name: fan_speed
+        type: string
+        mapping:
+          - dps_val: gentle
+            value: gentle
+          - dps_val: normal
+            value: normal
+          - dps_val: strong
+            value: strong
+          - dps_val: max
+            value: max
+      - id: 28
+        name: error
+        type: integer
+        optional: true
+  - entity: sensor
+    name: Tuvio Local Время уборки
+    dps:
+      - id: 6
+        type: integer
+        name: sensor
+        unit: min
+    class: duration
+  - entity: sensor
+    name: Tuvio Local Площадь уборки
+    dps:
+      - id: 7
+        type: integer
+        name: sensor
+        unit: m²
+    class: area
+  - entity: sensor
+    name: Tuvio Local Батарея
+    dps:
+      - id: 8
+        type: integer
+        name: sensor
+        unit: '%'
+    class: battery
+  - entity: sensor
+    name: Tuvio Local Ресурс боковой щётки
+    dps:
+      - id: 17
+        type: integer
+        name: sensor
+        unit: '%'
+        mapping:
+          - scale: 90.0
+  - entity: sensor
+    name: Tuvio Local Ресурс турбощётки
+    dps:
+      - id: 19
+        type: integer
+        name: sensor
+        unit: '%'
+        mapping:
+          - scale: 180.0
+  - entity: sensor
+    name: Tuvio Local Ресурс фильтра
+    dps:
+      - id: 21
+        type: integer
+        name: sensor
+        unit: '%'
+        mapping:
+          - scale: 90.0
+  - entity: sensor
+    name: Tuvio Local Код ошибки
+    dps:
+      - id: 28
+        type: integer
+        name: sensor
+  - entity: switch
+    name: Tuvio Local Пауза
+    dps:
+      - id: 2
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Не беспокоить
+    dps:
+      - id: 25
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Продолжить после подзарядки
+    dps:
+      - id: 27
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Блокировка от детей
+    dps:
+      - id: 106
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Подсветка
+    dps:
+      - id: 122
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Тщательная уборка
+    dps:
+      - id: 129
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Tuvio Local Уборка углов
+    dps:
+      - id: 130
+        type: boolean
+        name: switch
+  - entity: select
+    name: Tuvio Local Мощность
+    dps:
+      - id: 9
+        type: string
+        name: option
+        mapping:
+          - dps_val: gentle
+            value: Эко
+          - dps_val: normal
+            value: Стандартная
+          - dps_val: strong
+            value: Высокая
+          - dps_val: max
+            value: Турбо
+  - entity: select
+    name: Tuvio Local Подача воды
+    dps:
+      - id: 10
+        type: string
+        name: option
+        mapping:
+          - dps_val: low
+            value: Низкая
+          - dps_val: middle
+            value: Средняя
+          - dps_val: high
+            value: Высокая
+  - entity: select
+    name: Tuvio Local Усиление на коврах
+    dps:
+      - id: 107
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Включено
+          - dps_val: '2'
+            value: Выключено
+  - entity: select
+    name: Tuvio Local Очистка ковров
+    dps:
+      - id: 108
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Распознавание
+          - dps_val: '2'
+            value: Игнорирование
+          - dps_val: '3'
+            value: Обход
+  - entity: select
+    name: Tuvio Local Избегание столкновений
+    dps:
+      - id: 109
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Выключено
+          - dps_val: '2'
+            value: Включено
+  - entity: select
+    name: Tuvio Local Интервал самоочистки
+    dps:
+      - id: 110
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: 10 минут
+          - dps_val: '2'
+            value: 15 минут
+          - dps_val: '3'
+            value: 20 минут
+  - entity: select
+    name: Tuvio Local Режим уборки
+    dps:
+      - id: 111
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Сухая
+          - dps_val: '2'
+            value: Влажная
+          - dps_val: '3'
+            value: Последовательная
+          - dps_val: '4'
+            value: Комплексная
+  - entity: select
+    name: Tuvio Local Автоочистка пылесборника
+    dps:
+      - id: 124
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Выключено
+          - dps_val: '2'
+            value: Редко
+          - dps_val: '3'
+            value: Часто
+  - entity: select
+    name: Tuvio Local Мойка насадки
+    dps:
+      - id: 128
+        type: string
+        name: option
+        mapping:
+          - dps_val: '1'
+            value: Стандартная
+          - dps_val: '2'
+            value: Глубокая
+  - entity: number
+    name: Tuvio Local Громкость
+    dps:
+      - id: 26
+        type: integer
+        name: value
+        range:
+          min: 0
+          max: 7
+        mapping:
+          - step: 1.0
+  - entity: number
+    name: Tuvio Local Время сушки, мин
+    dps:
+      - id: 123
+        type: integer
+        name: value
+        range:
+          min: 60
+          max: 240
+        mapping:
+          - step: 60.0
+  - entity: button
+    name: Tuvio Local Сброс ресурса боковой щётки
+    icon: mdi:backup-restore
+    dps:
+      - id: 18
+        name: button
+        type: boolean
+        optional: true
+  - entity: button
+    name: Tuvio Local Сброс ресурса турбощётки
+    icon: mdi:backup-restore
+    dps:
+      - id: 20
+        name: button
+        type: boolean
+        optional: true
+  - entity: button
+    name: Tuvio Local Сброс ресурса фильтра
+    icon: mdi:backup-restore
+    dps:
+      - id: 22
+        name: button
+        type: boolean
+        optional: true
+  - entity: button
+    name: Tuvio Local Мойка насадки
+    icon: mdi:water
+    dps:
+      - id: 112
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: '3'
+            value: true
+  - entity: button
+    name: Tuvio Local Сушка насадки
+    icon: mdi:weather-sunny
+    dps:
+      - id: 112
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: '4'
+            value: true
+  - entity: button
+    name: Tuvio Local Очистка пылесборника
+    icon: mdi:delete
+    dps:
+      - id: 112
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: '5'
+            value: true
+  - entity: button
+    name: Tuvio Local Очистка бака с водой
+    icon: mdi:cup-water
+    dps:
+      - id: 112
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: '6'
+            value: true
+  - entity: button
+    name: Tuvio Local Комната 1
+    icon: mdi:numeric-1-box
+    dps:
+      - id: 15
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: qgAEFAEBFCo=
+            value: true
+  - entity: button
+    name: Tuvio Local Комната 2
+    icon: mdi:numeric-2-box
+    dps:
+      - id: 15
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: qgAEFAEBFSs=
+            value: true
+  - entity: button
+    name: Tuvio Local Комната 3
+    icon: mdi:numeric-3-box
+    dps:
+      - id: 15
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: qgAEFAEBFiw=
+            value: true
+  - entity: button
+    name: Tuvio Local Комната 4
+    icon: mdi:numeric-4-box
+    dps:
+      - id: 15
+        name: button
+        type: string
+        optional: true
+        mapping:
+          - dps_val: qgAEFAEBFy0=
+            value: true

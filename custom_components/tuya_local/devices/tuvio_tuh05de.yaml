@@ -1,0 +1,95 @@
+name: Tuvio TUH05DE
+products:
+  - id: w7c75twee9njzqw6
+    manufacturer: Tuvio
+    model: TUH05DE
+entities:
+  - entity: switch
+    name: Power
+    dps:
+      - id: 1
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Spray
+    dps:
+      - id: 2
+        type: boolean
+        name: switch
+  - entity: switch
+    name: LED
+    dps:
+      - id: 5
+        type: boolean
+        name: switch
+  - entity: switch
+    translation_key: sleep
+    dps:
+      - id: 16
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Sterilization
+    dps:
+      - id: 21
+        type: boolean
+        name: switch
+  - entity: switch
+    name: Anion
+    dps:
+      - id: 25
+        type: boolean
+        name: switch
+  - entity: select
+    name: Spray level
+    dps:
+      - id: 23
+        type: string
+        name: option
+        mapping:
+          - dps_val: level_1
+            value: Low
+          - dps_val: level_2
+            value: Medium
+          - dps_val: level_3
+            value: High
+          - dps_val: level4
+            value: Auto
+  - entity: number
+    name: Humidity
+    dps:
+      - id: 13
+        type: integer
+        name: value
+        range:
+          min: 0
+          max: 80
+        mapping:
+          - step: 1.0
+  - entity: sensor
+    name: Humidity current
+    dps:
+      - id: 14
+        type: integer
+        name: sensor
+        unit: '%'
+    class: humidity
+  - entity: sensor
+    dps:
+      - id: 10
+        type: integer
+        name: sensor
+        unit: °C
+    class: temperature
+  - entity: sensor
+    name: Fault code
+    dps:
+      - id: 22
+        type: integer
+        name: sensor
+  - entity: sensor
+    name: indicator color
+    dps:
+      - id: 6
+        type: string
+        name: sensor
